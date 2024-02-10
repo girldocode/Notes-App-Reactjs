@@ -1,0 +1,684 @@
+/* ------------------------FONTS------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap');
+
+/* -----------------------RESET------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: #090621;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* -------------------------HEADER CSS--------------------- */
+.container {
+  --max-width: 1500px;
+  --container-padding: 1rem;
+  width: min(var(--max-width), 100% - (var(--container-padding))*4);
+  margin-inline: auto;
+}
+
+.header {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .brand {
+  display: flex;
+  align-items: center;
+}
+
+header div .logo {
+  width: 70px;
+  filter: opacity(0.5) drop-shadow(0 0 0 #7D37FA);
+}
+
+header div h3 {
+  font-size: 1rem;
+  color: aliceblue;
+  margin-top: 10px;
+  font-family: 'Joti One', serif;
+}
+
+.search {
+  background-color: #090621;
+  width: 600px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  border: 1px #7D37FA solid;
+}
+
+.custom-input {
+  all: unset;
+  font: 16px system-ui;
+  color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+  padding: 6px 0;
+  border: none;
+  caret-color: white;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+}
+
+::placeholder {
+  color: #FFFFFF;
+  opacity: 0.4;
+  font-family: 'Joti One', serif;
+}
+
+.form-search {
+  padding-top: 0.75rem;
+  font-family: 'Joti One', serif;
+  margin-right: 5rem;
+}
+
+.add-note {
+  padding-top: 0.75rem;
+}
+
+.primary-button {
+  background-color: #7D37FA;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Joti One', serif;
+
+}
+
+.primary-button:hover {
+  background-color: white;
+  color: #7D37FA;
+}
+
+/* ---------------------MODAL CSS-------------------------------- */
+.modal-overlay {
+  margin: 0;
+  padding: 2rem;
+  position: fixed;
+  top: 10vh;
+  left: calc(50% - 15rem);
+  width: 30rem;
+  max-height: 80vh;
+  background: #7D37FA;
+  border: none;
+  border-radius: 6px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: slide-down-fade-in 300ms ease-out forwards;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  z-index: 99;
+}
+
+.close-btn {
+  position: absolute;
+  border-top: 0;
+  right: 0;
+  margin-right: -22px;
+  margin-top: -10px;
+  margin-bottom: 100px;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background: #7D37FA;
+  color: #090621;
+  border: 1px #090621 solid;
+}
+
+
+/* ---------------------MODAL-FORM CSS--------------------------------- */
+.form-input {
+  width: 25rem;
+  border: none;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  background: #7D37FA;
+  outline: none;
+  font-size: 1.50rem;
+  font-family: 'Inria Sans', sans-serif;
+  font-weight: 700;
+}
+
+.form-textarea {
+  width: 25rem;
+  border: none;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background: #7D37FA;
+  font-family: 'Inria Sans', sans-serif;
+  font-weight: 400;
+}
+
+
+
+.form-input::placeholder {
+  font-size: 1, 5rem;
+  color: #090621;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  background: #7D37FA;
+
+}
+
+.form-textarea::placeholder {
+  color: #090621;
+  font-family: 'Poppins', sans-serif;
+  background: #7D37FA;
+}
+
+.form-input {
+  padding-bottom: 20px;
+
+}
+
+.form-textarea,
+.form-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-top: 6px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  background: #7D37FA;
+}
+
+.form-textarea {
+  font-family: inherit;
+  font-size: inherit;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+
+  &:focus-visible {
+    outline: unset;
+  }
+}
+
+.form-textarea[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  color: #090621;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.modal-content {
+  background: #7D37FA;
+}
+
+.close-btn {
+  color: white;
+}
+
+.secondary-button {
+  background-color: #090621;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  position: absolute;
+  bottom: -12px;
+  right: 66px;
+}
+
+
+.secondary-button:hover {
+  background-color: #7D37FA;
+  color: #090621;
+  border: 1px #090621 solid;
+}
+
+/* ------------------------NOTES_FORM CSS-------------------------------- */
+.form-Container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+  position: relative;
+
+}
+
+.Form-container {
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #7D37FA;
+  border-radius: 5px;
+  width: 543px;
+  /* margin-left: 5rem; */
+  position: relative;
+  background-color: #7D37FA;
+
+
+}
+
+.Input-title {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #090621;
+  border: none;
+  color: white;
+  margin-bottom: 30px;
+
+  background-color: #7D37FA;
+
+  &:focus-visible {
+    outline: unset;
+  }
+
+
+}
+
+.Textarea-content {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 10px;
+  background-color: #090621;
+  border: none;
+  color: #fff;
+  background-color: #7D37FA;
+
+  &:focus-visible {
+    outline: unset;
+  }
+}
+
+.btn-container {
+  text-align: center;
+
+  bottom: 14px;
+  right: 0;
+  margin-right: 5px;
+}
+
+.btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+
+.btn-edit {
+  background-color: #090621;
+  color: white;
+  border: 1px #7D37FA solid;
+  position: absolute;
+  bottom: 20px;
+  right: 1rem;
+
+}
+
+.btn-edit:hover {
+  background: #7D37FA;
+  border: 1px #090621 solid;
+}
+
+.btn-delete {
+  background-color: #090621;
+  color: white;
+  border: 1px #7D37FA solid;
+  margin-left: 22rem;
+
+
+}
+
+.btn-delete:hover {
+  background: #7D37FA;
+  border: 1px #090621 solid;
+}
+
+
+/* -------------------------------EXISTING_NOTES_CSS----------------------------- */
+.notesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  /* margin-left: 70px; */
+  background-color: #7D37FA;
+}
+
+.Note-Box {
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #7D37FA;
+  border-radius: 5px;
+  width: 543px;
+  background-color: #7D37FA;
+  position: absolute;
+
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  color: white;
+  text-align: left;
+  max-width: 100%;
+  word-wrap: break-word;
+  font-family: 'Inria Sans', sans-serif;
+  font-weight: 700;
+}
+
+.content-text {
+  color: white;
+  text-align: left;
+  max-width: 100%;
+  word-wrap: break-word;
+  font-family: 'Inria Sans', sans-serif;
+  font-weight: 400;
+}
+
+.content-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+}
+
+.save-btn {
+  background-color: #090621;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-right: 1rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.save-btn:hover {
+  background-color: #7D37FA;
+  border: 1px #090621 solid;
+  color: #090621;
+}
+
+.cancel-btn {
+  background-color: #7D37FA;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #090621;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px #090621 solid;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cancel-btn:hover {
+  background: #7D37FA;
+  border: 1px white solid;
+  color: #fff;
+}
+
+/* --------------------------- */
+@media screen and (max-width: 1032px) {
+
+  .search {
+    width: 400px;
+  }
+
+  header div h3 {
+    font-size: 0.75rem;
+    padding-right: 1rem;
+
+  }
+
+  .Note-Box {
+    width: 380px;
+  }
+
+  .btn-delete {
+    margin-left: 13rem;
+  }
+
+  .Form-container {
+    width: 370px;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .search {
+    width: 300px;
+  }
+
+  header div .logo {
+    width: 53px;
+
+  }
+
+  .primary-button {
+    font-size: 12px;
+    padding: 0px 6px;
+  }
+
+  .Note-Box {
+    width: 311px;
+  }
+
+  .btn-delete {
+    margin-left: 9rem;
+  }
+
+  .Form-container {
+    width: 308px;
+  }
+
+  .btn {
+    padding: 4px 10px;
+  }
+
+  .content-title {
+    font-size: 1rem;
+
+  }
+
+  .content-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .search {
+    width: 200px;
+  }
+
+  header div .logo {
+    width: 45px;
+  }
+
+  header div h3 {
+    font-size: 0.65rem;
+  }
+
+  .form-Container {
+    padding-left: 10px;
+  }
+
+  .primary-button {
+    font-size: 10px;
+    padding: 0px 7px;
+  }
+
+  .form-search {
+    margin-right: 30px;
+  }
+
+  .Note-Box {
+    width: 241px;
+  }
+
+  .btn-delete {
+    margin-left: 6rem;
+  }
+
+  .Form-container {
+    width: 260px;
+  }
+
+  .content-title {
+    font-size: 1rem;
+
+  }
+
+  .content-text {
+    font-size: 0.75rem;
+  }
+
+}
+
+@media screen and (max-width: 488px) {
+  .form-Container {
+    padding-left: 10px;
+  }
+
+  .content-title {
+    font-size: 1rem;
+
+  }
+
+  .content-text {
+    font-size: 0.75rem;
+  }
+}
